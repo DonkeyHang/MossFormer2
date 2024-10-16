@@ -95,14 +95,14 @@ class Mossformer2Wrapper(nn.Module, PyTorchModelHubMixin):
         return next(self.parameters()).device
 
     def loadPretrained(self):
-        if not os.path.isdir(f'./model_weights/{self.config_name}'):
+        if not os.path.isdir(f'/Users/donkeyddddd/Documents/Rx_projects/git_projects/MossFormer2/MossFormer2_standalone/assets'):
             print("no checkpoints have been cached, getting them now...")
             getCheckpoints(self.config_name)
 
         #load the model checkpoints
-        self.encoder.load_state_dict(torch.load(f'model_weights/{self.config_name}/encoder.ckpt', map_location=torch.device(self.device)))
-        self.decoder.load_state_dict(torch.load(f'model_weights/{self.config_name}/decoder.ckpt', map_location=torch.device(self.device)))
-        self.masknet.load_state_dict(torch.load(f'model_weights/{self.config_name}/masknet.ckpt', map_location=torch.device(self.device)))
+        self.encoder.load_state_dict(torch.load(f'/Users/donkeyddddd/Documents/Rx_projects/git_projects/MossFormer2/MossFormer2_standalone/assets/mossformer2-librimix-2spk/encoder.ckpt', map_location=torch.device(self.device)))
+        self.decoder.load_state_dict(torch.load(f'/Users/donkeyddddd/Documents/Rx_projects/git_projects/MossFormer2/MossFormer2_standalone/assets/mossformer2-librimix-2spk/decoder.ckpt', map_location=torch.device(self.device)))
+        self.masknet.load_state_dict(torch.load(f'/Users/donkeyddddd/Documents/Rx_projects/git_projects/MossFormer2/MossFormer2_standalone/assets/mossformer2-librimix-2spk/masknet.ckpt', map_location=torch.device(self.device)))
     
     def inference(self, mix_file, output_dir):
         '''
